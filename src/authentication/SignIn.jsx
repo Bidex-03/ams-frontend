@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../ui/Button";
 import styled from "styled-components";
-import { useLogin } from "../services/useLogin";
+import { useLogin } from "./useLogin";
 import SpinnerMini from "../ui/SpinnerMini";
 
 const SignInContainer = styled.div`
@@ -50,7 +50,15 @@ const SignIn = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) return;
-    login({ email, password });
+    login(
+      { email, password }
+      // {
+      //   onSettled: () => {
+      //     setEmail("");
+      //     setPassword("");
+      //   },
+      // }
+    );
   }
 
   return (
@@ -73,7 +81,6 @@ const SignIn = () => {
           required
           disabled={isLoading}
         />
-        {/* <Button type="submit" disabled={isLoading}> */}
         <Button type="submit">
           {!isLoading ? "Sign in" : <SpinnerMini />}
         </Button>

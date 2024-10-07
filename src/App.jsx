@@ -1,6 +1,11 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 import GlobalStyles from "./styles/GlobalStyles";
 import Home from "./components/Home";
@@ -9,10 +14,11 @@ import BookTicket from "./components/BookTicket";
 import BoardingPass from "./components/BoardingPass";
 import AdminDashboard from "./components/AdminDashboard";
 import NotFound from "./components/NotFound";
-import SignUp from "./components/SignUp";
-import SignIn from "./components/SignIn";
+import SignUp from "./authentication/SignUp";
+import SignIn from "./authentication/SignIn";
 import { Toaster } from "react-hot-toast";
 import RootLayout from "./ui/RootLayout";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,19 +32,28 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
+
       <GlobalStyles />
       <Router>
         <Routes>
-          <Route element={<RootLayout />}>
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/" element={<Home />} />
+          <Route
+            element={
+              <ProtectedRoute>
+                <RootLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate replace to="home" />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/flights" element={<Flights />} />
             <Route path="/book-ticket" element={<BookTicket />} />
             <Route path="/boardingPass/:id" element={<BoardingPass />} />
             <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="*" element={<NotFound />} />
           </Route>
+
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
       <Toaster
@@ -62,5 +77,3 @@ function App() {
 }
 
 export default App;
-
-

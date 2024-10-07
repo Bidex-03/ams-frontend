@@ -16,13 +16,12 @@ const HomeContainer = styled.div`
 const HeroSection = styled.section`
   width: 100%;
   height: 80vh;
-  background: url("src/assets/hero-image.jpg") no-repeat center center/cover;
-  /* src\assets\hero-image.jpg */
+  background: url("/src/assets/hero-image.jpg") no-repeat center center/cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: var(--background-color);
   text-align: center;
 
   h1 {
@@ -50,10 +49,10 @@ const FlightSearch = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--background-color);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px var(--black-color);
   width: 80%;
   margin-top: -50px;
 
@@ -100,10 +99,10 @@ const FeaturesSection = styled.section`
     }
 
     .feature-card {
-      background-color: #fff;
+      background-color: var(--background-color);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 4px 6px var(--black-color);
       flex: 1;
       min-height: 150px;
 
@@ -122,7 +121,7 @@ const FeaturesSection = styled.section`
 
 const CTASection = styled.section`
   background-color: var(--secondary-color);
-  color: #fff;
+  color: var(--background-color);
   padding: 50px;
   text-align: center;
 
@@ -140,7 +139,7 @@ const Home = () => {
   const [departureDate, setDepartureDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
 
-  const { data: airports, isLoading, isError } = useAirports(); // Fetching airports
+  const { data: airports } = useAirports(); // Fetching airports
 
   const handleSearchFlights = () => {
     // Handle flight search logic
@@ -148,8 +147,8 @@ const Home = () => {
   };
 
   // Render loading or error state if needed
-//   if (isLoading) return <p>Loading Airports...</p>;
-//   if (isError) return <p>Error loading airports. Please try again later.</p>;
+    // if (isLoading) return <p>Loading Airports...</p>;
+    // if (isError) return <p>Error loading airports. Please try again later.</p>;
 
   console.log(airports); // Log the airports data to see its structure
 
