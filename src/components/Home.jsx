@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../ui/Button";
 import { useAirports } from "../services/airportService";
+import heroImg from "../assets/hero-image.jpg"
 
 // Styled-components for the landing page sections
 const HomeContainer = styled.div`
@@ -16,7 +17,8 @@ const HomeContainer = styled.div`
 const HeroSection = styled.section`
   width: 100%;
   height: 80vh;
-  background: url("/src/assets/hero-image.jpg") no-repeat center center/cover;
+  /* background: url("/src/assets/hero-image.jpg") no-repeat center center/cover; */
+  background: url(${heroImg}) no-repeat center center/cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
