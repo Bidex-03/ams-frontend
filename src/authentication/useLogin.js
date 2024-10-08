@@ -15,7 +15,7 @@ export function useLogin() {
       }),
     onSuccess: (user) => {
       // console.log(user);
-      queryClient.setQueriesData(["user"], user.user);
+      queryClient.setQueryData(["user"], user.user);
       navigate("/home");
     },
     onError: (err) => {

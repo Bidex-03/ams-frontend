@@ -17,7 +17,6 @@ const HomeContainer = styled.div`
 const HeroSection = styled.section`
   width: 100%;
   height: 80vh;
-  /* background: url("/src/assets/hero-image.jpg") no-repeat center center/cover; */
   background: url(${heroImg}) no-repeat center center/cover;
   display: flex;
   flex-direction: column;

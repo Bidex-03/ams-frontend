@@ -51,13 +51,13 @@ const SignIn = () => {
     e.preventDefault();
     if (!email || !password) return;
     login(
-      { email, password }
-      // {
-      //   onSettled: () => {
-      //     setEmail("");
-      //     setPassword("");
-      //   },
-      // }
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail("");
+          setPassword("");
+        },
+      }
     );
   }
 

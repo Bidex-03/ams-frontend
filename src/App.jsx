@@ -19,6 +19,7 @@ import SignIn from "./authentication/SignIn";
 import { Toaster } from "react-hot-toast";
 import RootLayout from "./ui/RootLayout";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import Profile from "./components/Profile";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,6 +50,7 @@ function App() {
             <Route path="/book-ticket" element={<BookTicket />} />
             <Route path="/boardingPass/:id" element={<BoardingPass />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
 
           <Route path="/sign-up" element={<SignUp />} />
