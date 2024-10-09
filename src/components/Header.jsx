@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import SignOut from "../authentication/SignOut";
-import User from "./User";
+import UserAvatar from "./UserAvatar";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -104,7 +104,7 @@ const Header = () => {
       </NavLinks>
 
       <UserActions>
-        <User />
+        <UserAvatar />
         <SignOut />
       </UserActions>
     </HeaderContainer>

@@ -3,6 +3,7 @@ import { Button } from "../ui/Button";
 import styled from "styled-components";
 import { useLogin } from "./useLogin";
 import SpinnerMini from "../ui/SpinnerMini";
+import { Link } from "react-router-dom";
 
 const SignInContainer = styled.div`
   display: flex;
@@ -43,8 +44,10 @@ const Title = styled.h2`
 `;
 
 const SignIn = () => {
-  const [email, setEmail] = useState("abdullahqaasim14@gmail.com");
-  const [password, setPassword] = useState("Abdullah01");
+  // const [email, setEmail] = useState("abdullahqaasim14@gmail.com");
+  // const [password, setPassword] = useState("Abdullah01");
+  const [email, setEmail] = useState("bidex@example.com");
+  const [password, setPassword] = useState("12345678");
   const { login, isLoading } = useLogin();
 
   function handleSubmit(e) {
@@ -81,9 +84,16 @@ const SignIn = () => {
           required
           disabled={isLoading}
         />
-        <Button type="submit">
-          {!isLoading ? "Sign in" : <SpinnerMini />}
-        </Button>
+
+        {/* <div style={{display: "flex", alignItems: "center", gap: "10px"}}> */}
+        <div>
+          <Button type="submit">
+            {!isLoading ? "Sign in" : <SpinnerMini />}
+          </Button>
+          <p style={{ marginTop: "10px" }}>
+            Don't have account yet? <Link to="/sign-up">Sign Up</Link>
+          </p>
+        </div>
       </Form>
     </SignInContainer>
   );
