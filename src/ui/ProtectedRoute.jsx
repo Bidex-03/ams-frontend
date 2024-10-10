@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import LoadingSpinner from "./Spinner";
 
-const FullPage = styled.div`
+export const FullPage = styled.div`
   height: 100vh;
   background-color: var(--background-color);
   display: flex;
