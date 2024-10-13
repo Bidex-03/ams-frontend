@@ -1,10 +1,8 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../ui/Button";
-import { useAirports } from "../services/airportService";
 // import heroImg from "../assets/hero-image.jpg"
-import heroImg from "../assets/hero-image.webp"
+import heroImg from "../assets/hero-image.webp";
 
 // Styled-components for the landing page sections
 const HomeContainer = styled.div`
@@ -43,40 +41,6 @@ const HeroSection = styled.section`
 
     p {
       font-size: 1.2rem;
-    }
-  }
-`;
-
-const FlightSearch = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--background-color);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px var(--black-color);
-  width: 80%;
-  margin-top: -50px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  input,
-  select {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-    border: 1px solid var(--secondary-color);
-    width: 100%;
-  }
-
-  @media (max-width: 768px) {
-    input,
-    select,
-    button {
-      width: 100%;
     }
   }
 `;
@@ -136,24 +100,6 @@ const CTASection = styled.section`
 const Home = () => {
   const navigate = useNavigate();
 
-  const [selectedFrom, setSelectedFrom] = useState("");
-  const [selectedTo, setSelectedTo] = useState("");
-  const [departureDate, setDepartureDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
-
-  const { data: airports } = useAirports(); // Fetching airports
-
-  const handleSearchFlights = () => {
-    // Handle flight search logic
-    navigate("/flights");
-  };
-
-  // Render loading or error state if needed
-    // if (isLoading) return <p>Loading Airports...</p>;
-    // if (isError) return <p>Error loading airports. Please try again later.</p>;
-
-  console.log(airports); // Log the airports data to see its structure
-
   return (
     <HomeContainer>
       {/* Hero Section */}
@@ -163,46 +109,6 @@ const Home = () => {
         <Button onClick={() => navigate("/book-ticket")}>Book a Flight</Button>
       </HeroSection>
 
-      {/* Flight Search Section */}
-      <FlightSearch>
-        <select
-          value={selectedFrom}
-          onChange={(e) => setSelectedFrom(e.target.value)}
-        >
-          <option value="">Flying From</option>
-          {airports?.map((airport) => (
-            <option key={airport.id} value={airport.name}>
-              {airport.airport_name} ({airport.airport_code})
-            </option>
-          ))}
-        </select>
-
-        <select
-          value={selectedTo}
-          onChange={(e) => setSelectedTo(e.target.value)}
-        >
-          <option value="">Flying To</option>
-          {airports?.map((airport) => (
-            <option key={airport.id} value={airport.name}>
-              {airport.airport_name} ({airport.airport_code})
-            </option>
-          ))}
-        </select>
-
-        <input
-          type="date"
-          value={departureDate}
-          onChange={(e) => setDepartureDate(e.target.value)}
-        />
-        <input
-          type="date"
-          value={returnDate}
-          onChange={(e) => setReturnDate(e.target.value)}
-        />
-
-        <Button onClick={handleSearchFlights}>Search Flights</Button>
-      </FlightSearch>
-
       {/* Features Section */}
       <FeaturesSection>
         <h2>Our Services</h2>
@@ -211,12 +117,6 @@ const Home = () => {
             <h3>Book Flights</h3>
             <p>
               Book your next flight with ease using our seamless booking system.
-            </p>
-          </div>
-          <div className="feature-card">
-            <h3>Flight Status Tracking</h3>
-            <p>
-              Track the status of your flight in real-time with our updates.
             </p>
           </div>
           <div className="feature-card">

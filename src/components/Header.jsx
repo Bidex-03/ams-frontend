@@ -25,9 +25,12 @@ const Logo = styled.div`
 const LogoLink = styled(Link)`
   color: var(--background-color);
   text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 0.2s;
 
   &:hover {
-    text-decoration: underline;
+    background-color: var(--secondary-color);
   }
 `;
 
@@ -39,9 +42,13 @@ const NavLinks = styled.nav`
     color: var(--background-color);
     text-decoration: none;
     font-size: 1rem;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.2s;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      background: var(--secondary-color);
     }
   }
 
@@ -90,7 +97,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Logo>
-        <LogoLink to="/home">Airline</LogoLink>
+        <LogoLink to="/home">AMS</LogoLink>
       </Logo>
 
       <Hamburger onClick={toggleMenu}>
@@ -99,8 +106,8 @@ const Header = () => {
 
       <NavLinks isOpen={menuOpen}>
         <Link to="/bookings">Bookings</Link>
-        <Link to="/flights">Flights</Link>
         <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
       </NavLinks>
 
       <UserActions>

@@ -9,7 +9,7 @@ import {
 
 import GlobalStyles from "./styles/GlobalStyles";
 import Home from "./components/Home";
-import Flights from "./components/Flights";
+import AvailableFlights from "./components/AvailableFlights";
 import BookTicket from "./components/BookTicket";
 import BoardingPass from "./components/BoardingPass";
 import AdminDashboard from "./components/AdminDashboard";
@@ -20,6 +20,9 @@ import { Toaster } from "react-hot-toast";
 import RootLayout from "./ui/RootLayout";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import Profile from "./components/Profile";
+import About from "./components/About";
+import Bookings from "./components/Bookings";
+import Contact from "./components/Contact";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,9 +49,13 @@ function App() {
           >
             <Route index element={<Navigate replace to="home" />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/flights" element={<Flights />} />
+            <Route path="/bookings" element={<Bookings />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* <Route path="/available-flights" element={<AvailableFlights />} /> */}
             <Route path="/book-ticket" element={<BookTicket />} />
-            <Route path="/boardingPass/:id" element={<BoardingPass />} />
+            <Route path="/book-flight/:flightId" element={<BookTicket />} />
+            <Route path="/boarding-pass" element={<BoardingPass />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/profile" element={<Profile />} />
           </Route>

@@ -8,6 +8,7 @@ import LoadingSpinner from "../ui/Spinner";
 import { FullPage } from "../ui/ProtectedRoute";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SpinnerMini from "../ui/SpinnerMini";
 
 const Container = styled.div`
   padding: 20px;
@@ -82,7 +83,7 @@ const BookTicket = () => {
     onSuccess: () => {
       queryClient.invalidateQueries("flights");
       toast.success("Flight booked successfully!");
-      navigate("/home");
+      navigate("/bookings");
     },
     onError: (error) => {
       console.error("Booking error:", error);
@@ -126,6 +127,12 @@ const BookTicket = () => {
 
   const handleFlightChange = async (e) => {
     const flightId = e.target.value;
+
+    // Reset other fields when a new flight is selected
+    setSeatNumber(""); // Reset seat number
+    classRef.current.value = "economy"; // Reset class to "economy"
+    priceRef.current.value = ""; // Reset price field
+
     if (!flightId) return;
 
     // Fetch the selected flight's details to get the economy price
@@ -244,9 +251,9 @@ const BookTicket = () => {
           readOnly
           ref={priceRef}
         />
-
+        
         <Button type="submit" disabled={bookingLoading}>
-          {bookingLoading ? "Booking..." : "Book Ticket"}
+          {bookingLoading ? <SpinnerMini /> : "Book Ticket"}
         </Button>
       </form>
     </Container>
