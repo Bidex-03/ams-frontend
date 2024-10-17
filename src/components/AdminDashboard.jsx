@@ -1,3 +1,4 @@
+// this component is currently not in use //
 import styled from "styled-components";
 
 const AdminDashboardContainer = styled.div`

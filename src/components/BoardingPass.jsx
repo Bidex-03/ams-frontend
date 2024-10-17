@@ -1,3 +1,4 @@
+// this component is currently not in use //
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 

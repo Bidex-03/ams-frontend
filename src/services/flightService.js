@@ -1,36 +1,4 @@
-// import { useQuery } from "@tanstack/react-query";
-
-// export const useFlights = (searchCriteria) => {
-//   return useQuery(["flights", searchCriteria], () =>
-//     fetchFlights(searchCriteria)
-//   );
-// };
-
-// Mock flight data
-// const fetchFlights = async ({ from, to, departureDate, returnDate }) => {
-//   // Replace this with actual API integration
-//   return [
-//     {
-//       id: 1,
-//       flight_number: "FL123",
-//       departure: from,
-//       destination: to,
-//       departure_date: departureDate,
-//       return_date: returnDate,
-//       price: "$500",
-//     },
-//     {
-//       id: 2,
-//       flight_number: "FL456",
-//       departure: from,
-//       destination: to,
-//       departure_date: departureDate,
-//       return_date: returnDate,
-//       price: "$600",
-//     },
-//   ];
-// };
-
+// This component is currently not in use //
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "./supabase";
 
